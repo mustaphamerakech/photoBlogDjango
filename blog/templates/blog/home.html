@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
-<h2>Télécharger une photo</h2>
-<form method="post" enctype="multipart/form-data">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="submit" >Publier</button>
-</form>
+    <h2>Photos</h2>
+    <div class="grid-container">
+        {% for photo in photos %}
+            <div class="post">
+                <img src="{{ photo.image.url }}">
+                <p>{{ photo.caption }}</p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
-
-
